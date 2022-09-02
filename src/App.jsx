@@ -2,6 +2,7 @@ import { Header } from './components/Header'
 import './global.css'
 import styles from './App.module.css'
 import { Sidebar } from './components/Sidebar'
+import { Post } from './components/Post'
 
 export function App() {
 
@@ -13,7 +14,7 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar/>
         <main>
-          <h4>Passando valores por propriedades entre os componentes no React</h4>
+          <Post/>
         </main>
       </div>
     </div>
