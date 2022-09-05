@@ -1,18 +1,18 @@
+import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-export function Post() {
+export function Post(props) {
     return (
         <article className={styles.post}>
 
             {/* Cabeçalho com os dados de quem publicou */}
             <header>
                 <div className={styles.author}>
-                    <img
-                        className={styles.avatar}
-                        src="https://avatars.githubusercontent.com/u/97187822?v=4"
-                     />
-
+                    
+                     <Avatar possuiBorda={true}
+                      src="https://avatars.githubusercontent.com/u/17316392?v=4" />
+                    
                      <div className={styles.authorInfo}>
                         <strong>Guilherme Spanserki</strong>
                         <span>Web Developer</span>
