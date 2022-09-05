@@ -2,7 +2,19 @@ import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-export function Post(props) {
+import {format, formatDistanceToNow} from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
+export function Post({author, publishedAt}) {
+    const publishedDateFormated = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
+        locale: ptBR
+    })
+
+    const publishedDateFormatedPublic = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+
     return (
         <article className={styles.post}>
 
@@ -11,15 +23,18 @@ export function Post(props) {
                 <div className={styles.author}>
                     
                      <Avatar possuiBorda={true}
-                      src="https://avatars.githubusercontent.com/u/17316392?v=4" />
+                      src={author.avatarUrl} />
                     
                      <div className={styles.authorInfo}>
-                        <strong>Guilherme Spanserki</strong>
-                        <span>Web Developer</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                      </div>
                 </div>
 
-                <time className={styles.time} title='02 de Setembro as 10h58' dateTime='2022-05-08 08:13:26'>Publicado a 1h</time>
+                <time className={styles.time}
+                    title={publishedDateFormated}
+                    dateTime={publishedAt.toISOString()}>{publishedDateFormatedPublic}
+                </time>
             </header>
 
             {/* Listagem da publicação */}
