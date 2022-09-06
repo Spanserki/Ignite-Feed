@@ -18,15 +18,14 @@
     gap: 1rem;
 }
 
-.author span {
+.authorInfo span {
     color: var(--gray-400);
-    display: block;
     font-size: 0.875rem;
+    
 }
 
 .authorInfo strong {
     display: block;
-    margin-left: 10px;
 }
 
     
@@ -50,6 +49,7 @@
     color: var(--green-500);
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .content a:hover {

@@ -4,8 +4,9 @@ import styles from './Post.module.css'
 
 import {format, formatDistanceToNow} from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+import { useState } from 'react'
 
-export function Post({author, publishedAt}) {
+export function Post({author, publishedAt, content}) {
     const publishedDateFormated = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
         locale: ptBR
     })
@@ -15,6 +16,21 @@ export function Post({author, publishedAt}) {
         addSuffix: true
     })
 
+    const [comments, setComment] = useState(['Muito bom hein ?'])
+    const [newComentarios, setNewComentarios] = useState('')
+    
+    function adicionarComentario() {
+        event.preventDefault()
+        setComment([...comments, newComentarios])
+        setNewComentarios('')
+    }
+
+    function deleteComment(comment) {
+        const novaListaComentarios = comments.filter(response => {
+            return response != comment
+        })
+        setComment(novaListaComentarios)
+    }
     return (
         <article className={styles.post}>
 
@@ -22,7 +38,8 @@ export function Post({author, publishedAt}) {
             <header>
                 <div className={styles.author}>
                     
-                     <Avatar possuiBorda={true}
+                     <Avatar 
+                      possuiBorda={true}
                       src={author.avatarUrl} />
                     
                      <div className={styles.authorInfo}>
@@ -39,28 +56,42 @@ export function Post({author, publishedAt}) {
 
             {/* Listagem da publicação */}
             <div className={styles.content}>
-                
-                <p>Fala galeraa 👋 </p>
-
-                <p>Acabei de subir mais um projeto no meu portifolio É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀 </p>
-
-                <p>👉 <a href="">jane.design/doctorcare</a> </p>
-
-                <p> <a href="">#novoprojeto #nlw #rocketseat</a></p>
-                
+                {
+                    content.map (line => {
+                        if (line.type === 'paragraph') {
+                            return <p key={line.content}>{line.content}</p>
+                        }
+                        if (line.type === 'link') {
+                            return <p key={line.content}> <a>{line.content}</a></p>
+                        }
+                    })
+                }
             </div>
 
             {/* Sessão comentarios */}
-            <form className={styles.commentForm}>
+            <form onSubmit={adicionarComentario} className={styles.commentForm}>
                 <strong>Deixe seu feedback</strong>
 
-                <textarea placeholder='Deixe seu comentario'></textarea>
+                <textarea 
+                    required
+                    value={newComentarios}
+                    onChange={e => setNewComentarios(e.target.value)}
+                    name='comment'
+                    placeholder='Deixe seu comentario'></textarea>
 
                 <button type='submit'>Publicar</button>
             </form>
 
             <div className={styles.commentList}>
-                <Comment />
+                {
+                    comments.map(comment => {
+                        return <Comment 
+                        onDeleteComment={deleteComment}
+                        key={comment}
+                        publishedAt={publishedDateFormatedPublic}
+                        content={comment} />
+                    })
+                }
             </div>
         </article>
     )
