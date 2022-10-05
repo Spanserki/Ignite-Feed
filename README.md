@@ -1,10 +1,15 @@
-<h2> Rede Social :alien:</h2>
+<h2>Social Network :alien:</h2>
 
 <hr/>
 
-<h3>Seja bem-vindo</h3>
+<h3>Be welcome :raised_hand_with_fingers_splayed:</h3>
 
-<p>Nesse projeto foi usado React.Js com TypeScript</p>
+#Technologies
+<p>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
+</p>
 
 <h3>Objetivo</h3>
 
@@ -18,9 +23,4 @@ além de poder aplaudir quantas vezes quiser o Post ou até mesmo excluir
   </div>
   
 <hr/>
-  
-<h3>Desenvolvimento</h3>
 
-<p>Nesse projeto eu consegui aprender bastante sobre CSS usando módulos, aprendi também a passar propriedades para componentes para exibir nossos 
-Posts</p>
-<p>OBS: O projeto ainda consta com algumas informações estáticas e futuramente pretendo fazer tudo automatizado</p>
