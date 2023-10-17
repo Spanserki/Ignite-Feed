@@ -14,13 +14,10 @@
 
 <h3>Objetivo</h3>
 
-<P>Listar publicações de pessoas e poder adicionar comentários podendo interagir com cada publicação, a aplicação informa o horário do comentário e da publicação
-além de poder aplaudir quantas vezes quiser o Post ou até mesmo excluir
-</p>
-
+<P>O Ignite Feed simula uma rede social onde você tem publicações de amigos onde você pode comentar, curtir comentários de outras pessoas e excluir seu comentário caso queira.</p>
 
 <div>
-  <img src="https://user-images.githubusercontent.com/97187822/191392091-7bf92e96-12f5-47ad-b680-30b26ba7b79d.gif" />
+  <img src="https://github.com/Spanserki/Spanserki/assets/97187822/4080c980-2ac4-4c1f-a206-d747c37ba72a" />
   </div>
   
 <hr/>
