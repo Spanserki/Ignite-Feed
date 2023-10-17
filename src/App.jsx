@@ -8,16 +8,16 @@ const posts = [
   {
     id: 1,
     author: {
-      avatarUrl: 'https://avatars.githubusercontent.com/u/97187822?v=4',
-      name: 'Guilherme Spanserki',
-      role: 'Web Developer'
+      avatarUrl: 'https://avatars.githubusercontent.com/u/2254731?v=4',
+      name: 'Diego',
+      role: 'CEO'
     },
     content: [
       {type: 'paragraph', content: 'Fala galeraa 👋'},
       {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifolio É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀 '},
       {type: 'link', content: 'jane.design/doctorcare'}
     ],
-    publishedAt: new Date(Date.now())
+    publishedAt: new Date('2023-09-05 20:00:00')
   },
   {
     id: 2,

@@ -2,11 +2,11 @@ import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-import {format, formatDistanceToNow} from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { useState } from 'react'
 
-export function Post({author, publishedAt, content}) {
+export function Post({ author, publishedAt, content }) {
     const publishedDateFormated = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
         locale: ptBR
     })
@@ -16,9 +16,14 @@ export function Post({author, publishedAt, content}) {
         addSuffix: true
     })
 
+    const commentDatePostFormat = formatDistanceToNow(new Date(), {
+        locale: ptBR,
+        addSuffix: true
+    })
+
     const [comments, setComment] = useState(['Muito bom hein ?'])
     const [newComentarios, setNewComentarios] = useState('')
-    
+
     function adicionarComentario() {
         event.preventDefault()
         setComment([...comments, newComentarios])
@@ -37,15 +42,15 @@ export function Post({author, publishedAt, content}) {
             {/* Cabeçalho com os dados de quem publicou */}
             <header>
                 <div className={styles.author}>
-                    
-                     <Avatar 
-                      possuiBorda={true}
-                      src={author.avatarUrl} />
-                    
-                     <div className={styles.authorInfo}>
+
+                    <Avatar
+                        possuiBorda={true}
+                        src={author.avatarUrl} />
+
+                    <div className={styles.authorInfo}>
                         <strong>{author.name}</strong>
                         <span>{author.role}</span>
-                     </div>
+                    </div>
                 </div>
 
                 <time className={styles.time}
@@ -57,7 +62,7 @@ export function Post({author, publishedAt, content}) {
             {/* Listagem da publicação */}
             <div className={styles.content}>
                 {
-                    content.map (line => {
+                    content.map(line => {
                         if (line.type === 'paragraph') {
                             return <p key={line.content}>{line.content}</p>
                         }
@@ -72,7 +77,7 @@ export function Post({author, publishedAt, content}) {
             <form onSubmit={adicionarComentario} className={styles.commentForm}>
                 <strong>Deixe seu feedback</strong>
 
-                <textarea 
+                <textarea
                     required
                     value={newComentarios}
                     onChange={e => setNewComentarios(e.target.value)}
@@ -85,11 +90,12 @@ export function Post({author, publishedAt, content}) {
             <div className={styles.commentList}>
                 {
                     comments.map(comment => {
-                        return <Comment 
-                        onDeleteComment={deleteComment}
-                        key={comment}
-                        publishedAt={publishedDateFormatedPublic}
-                        content={comment} />
+                        return <Comment
+                            onDeleteComment={deleteComment}
+                            key={comment}
+                            publishedAt={commentDatePostFormat}
+                            content={comment}
+                        />
                     })
                 }
             </div>

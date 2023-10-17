@@ -18,13 +18,13 @@ export function Comment({content, publishedAt, onDeleteComment}) {
     return (
         <div className={styles.comment}>
             <Avatar possuiBorda={false}
-             src="https://avatars.githubusercontent.com/u/2254731?v=4" />
+             src="https://avatars.githubusercontent.com/u/97187822?v=4" />
 
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
                     <header>
                         <div className={styles.authorAndTime}>
-                            <strong>Diego</strong>
+                            <strong>Guilherme Spanserki</strong>
 
                             <time className={styles.time}>{publishedAt}</time>
                         </div>
